@@ -4,181 +4,156 @@ using System.Linq;
 using System.Text;
 using System.Drawing;
 
-
-namespace FunkcijeAplikacija
+namespace CrtanjeFunkcije
 {
     public abstract class Funkcija
     {
         public abstract double Vrednost(double x);
-       
+        public abstract double this[double x] { get; }
         public void Nacrtaj(Graphics g, PointF Oxy, double k, double a, double b)
         {
             Pen olovka = new Pen(Color.Black, 2);
-            for (double x = a; x < b; x+=0.001)
+            for (double x = a+0.001; x <= b; x+=0.001)
             {
-                g.DrawLine(olovka, (float)(Oxy.X + x * k), (float)(Oxy.Y - Vrednost(x) * k),
-                    (float)(Oxy.X + (x+0.001) * k), (float)(Oxy.Y - Vrednost(x+0.001) * k));
+                g.DrawLine(olovka, (float)(Oxy.X + (x - 0.001) * k), (float)(Oxy.Y - this[x - 0.001] * k), (float)(Oxy.X + x * k), (float)(Oxy.Y - this[x] * k));
             }
         }
 
-        public static Funkcija operator +(Funkcija f, Funkcija g)
+        public static Funkcija operator +(Funkcija F1, Funkcija F2)
         {
-            return new SlozenaFunkcija(f, g, '+');
+            return new SlozenaFunkcija(F1, F2, '+');
         }
-        public static Funkcija operator -(Funkcija f, Funkcija g)
+        public static Funkcija operator -(Funkcija F1, Funkcija F2)
         {
-            return new SlozenaFunkcija(f, g, '-');
+            return new SlozenaFunkcija(F1, F2, '-');
         }
-        public static Funkcija operator *(Funkcija f, Funkcija g)
+        public static Funkcija operator *(Funkcija F1, Funkcija F2)
         {
-            return new SlozenaFunkcija(f, g, '*');
+            return new SlozenaFunkcija(F1, F2, '*');
         }
-        public static Funkcija operator /(Funkcija f, Funkcija g)
+        public static Funkcija operator /(Funkcija F1, Funkcija F2)
         {
-            return new SlozenaFunkcija(f, g, '/');
+            return new SlozenaFunkcija(F1, F2, '/');
         }
-        //public static Funkcija operator ~(Funkcija f, Funkcija g)
-        //{
-        //    return new SlozenaFunkcija(f, g, '°');
-        //}
-        public static Funkcija operator ^(Funkcija f, Funkcija g)
+        public static Funkcija operator ^(Funkcija F1, Funkcija F2)
         {
-            return new SlozenaFunkcija(f, g, '^');
-        }
-        
-    }
-    public class KonstantnaFunkcija:Funkcija
-    {
-        double c;
-        public KonstantnaFunkcija()
-        {
-            c=0;
-        }
-        public KonstantnaFunkcija(double x)
-        {
-            c=x;
+            return new SlozenaFunkcija(F1, F2, '^');
         }
 
+        public static Funkcija operator -(Funkcija F)
+        {
+            return new Konstanta(0) - F;
+        }
+    }
+
+    public class Konstanta : Funkcija
+    {
+        double c;
+        public Konstanta(double c)
+        {
+            this.c = c;
+        }
+
+        public override double this[double x]
+        {
+            get { return c; }
+        }
         public override double Vrednost(double x)
         {
             return c;
         }
-        public override string  ToString()
-        {
-            return Convert.ToString(c);
-        }
 
-
-    }
-    public class PromenjivaFunkcija:Funkcija
-    {
-        public PromenjivaFunkcija()
+        public override string ToString()
         {
-        }
-        public override double  Vrednost(double x)
-        {
-             return x;
-        }
-        public override string  ToString()
-        {
-            return "x";
+            return c.ToString("0.00");
         }
     }
 
-
-   
-    public class SlozenaFunkcija:Funkcija
+    public class Promenljiva : Funkcija
     {
-        Funkcija f1,f2;
-        char znak;
-        public SlozenaFunkcija(Funkcija a,Funkcija b,char x)
+        public override double this[double x]
         {
-            f1=a;
-            f2=b;
-            znak=x;
+            get { return x; }
         }
-        public override double  Vrednost(double x)
+        public override double Vrednost(double x)
         {
-            if(znak=='+')
-                return f1.Vrednost(x)+f2.Vrednost(x);
-            if(znak=='-')
-                return f1.Vrednost(x)-f2.Vrednost(x);
-            if(znak=='*')
-                return f1.Vrednost(x)*f2.Vrednost(x);
-            if(znak=='/')
-                return f1.Vrednost(x)/f2.Vrednost(x);
+            return x;
+        }
+
+        public override string ToString()
+        {
+            return "X";
+        }
+    }
+
+    public class SlozenaFunkcija : Funkcija
+    {
+        Funkcija F1, F2;
+        char op;
+
+        public SlozenaFunkcija(Funkcija f, Funkcija g, char o)
+        {
+            F1 = f;
+            F2 = g;
+            op = o;
+        }
+
+        public override double this[double x]
+        {
+            get
+            {
+                switch (op)
+                {
+                    case '+': return F1[x] + F2[x];
+                    case '*': return F1[x] * F2[x];
+                    case '/': return F1[x] / F2[x];
+                    case '-': return F1[x] - F2[x];
+                    case '^': return Math.Pow(F1[x], F2[x]);
+                }
+                return 0;
+            }
+        }
+        public override double Vrednost(double x)
+        {
+            switch (op)
+            {
+                case '+': return F1[x] + F2[x];
+                case '*': return F1[x] * F2[x];
+                case '/': return F1[x] / F2[x];
+                case '-': return F1[x] - F2[x];
+                case '^': return Math.Pow(F1[x], F2[x]);
+            }
             return 0;
         }
-        public override string  ToString()
+
+        public override string ToString()
         {
-            return '('+f1.ToString()+')'+znak+'('+f2.ToString()+')';
+            return "("+F1.ToString()+op+F2.ToString()+")";
         }
     }
-    public class SinusnaFunkcija:Funkcija
+
+    public class Sinusna : Funkcija
     {
-        Funkcija f;
-        public SinusnaFunkcija(Funkcija f)
+        Funkcija F;
+        public Sinusna(Funkcija f)
         {
-            this.f = f;
+            F = f;
         }
-        
+
+        public override double this[double x]
+        {
+            get { return Math.Sin(F[x]); }
+        }
+
         public override double Vrednost(double x)
         {
-            return Math.Sin(f.Vrednost(x));
+            return Math.Sin(F[x]);
         }
 
         public override string ToString()
         {
-            return "sin("+f.ToString()+")";
+            return "sin("+F.ToString()+")";
         }
     }
-    public class KosinusnaFunkcija:Funkcija
-    {
-        Funkcija f;
-        public KosinusnaFunkcija(Funkcija f)
-        {
-            this.f = f;
-        }
-        
-        public override double Vrednost(double x)
-        {
-            return Math.Cos(f.Vrednost(x));
-        }
-        public override string ToString()
-        {
-            return "cos(" + f.ToString() + ")";
-        }
-        
-    }
-    /* public class TangensFunkcija:Funkcija
-     {
-         Funkcija f;
-
-         public TangensFunkcija(Funkcija f)
-         {
-             this.f = f;
-         }
-        public override double Vrednost(Funkcija f, double x)
-        {
-            return Math.Tan(f.Vrednost(x));
-        }
-        public override string ToString()
-        {
-            return "tan(" + f.ToString() + ")";
-        }
-    }*/
-
-    // public class SinusnaFunkcija:Funkcija
-    //{
-    //    TangensFunkcija f;
-    //   public override double vrednost(double x)
-    //   {
-    //       return 1/f.Vrednost(x);
-    //   }
-    //      public override double vrednost(double x,Funkcija t)
-    //   {
-    //       return 1/f.Vrednost(t.Vrednost(x));
-    //   }
-    // }
 
 }

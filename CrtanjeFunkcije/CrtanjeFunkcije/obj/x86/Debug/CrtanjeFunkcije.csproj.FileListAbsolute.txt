@@ -1,0 +1,9 @@
+C:\Users\Mijodrag Đurišić\AppData\Local\Temporary Projects\CrtanjeFunkcije\bin\Debug\CrtanjeFunkcije.exe
+C:\Users\Mijodrag Đurišić\AppData\Local\Temporary Projects\CrtanjeFunkcije\bin\Debug\CrtanjeFunkcije.pdb
+C:\Users\Mijodrag Đurišić\AppData\Local\Temporary Projects\CrtanjeFunkcije\obj\x86\Debug\CrtanjeFunkcije.Form1.resources
+C:\Users\Mijodrag Đurišić\AppData\Local\Temporary Projects\CrtanjeFunkcije\obj\x86\Debug\CrtanjeFunkcije.Properties.Resources.resources
+C:\Users\Mijodrag Đurišić\AppData\Local\Temporary Projects\CrtanjeFunkcije\obj\x86\Debug\CrtanjeFunkcije.csproj.GenerateResource.Cache
+C:\Users\Mijodrag Đurišić\AppData\Local\Temporary Projects\CrtanjeFunkcije\obj\x86\Debug\CrtanjeFunkcije.exe
+C:\Users\Mijodrag Đurišić\AppData\Local\Temporary Projects\CrtanjeFunkcije\obj\x86\Debug\CrtanjeFunkcije.pdb
+C:\Users\Mijodrag Đurišić\Documents\Visual Studio 2010\Projects\CrtanjeFunkcije\CrtanjeFunkcije\obj\x86\Debug\CrtanjeFunkcije.exe
+C:\Users\Mijodrag Đurišić\Documents\Visual Studio 2010\Projects\CrtanjeFunkcije\CrtanjeFunkcije\obj\x86\Debug\CrtanjeFunkcije.pdb

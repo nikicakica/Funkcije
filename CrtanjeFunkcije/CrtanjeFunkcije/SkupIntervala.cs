@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-//ja moram da idem sad
 namespace CrtanjeFunkcije
 {
     class SkupIntervala
@@ -51,7 +50,6 @@ namespace CrtanjeFunkcije
                         j--;
                         
                         //sada u taj novi niz kopiramo elemente iz pomocnog niza
-                        //pazi samo gde stoi j--
                     }
                 }
                 
@@ -72,5 +70,13 @@ namespace CrtanjeFunkcije
             }
             return res;
         }
+        public bool Pripada(double x)
+        {
+            for (int i = 0; i < intervals.Length; i++) {
+                if (intervals[i].Pripada(x)) return true;
+            }
+            return false;
+        }
+
     }
 }

@@ -12,12 +12,28 @@ namespace CrtanjeFunkcije
     {
         public abstract double Vrednost(double x);
         public abstract double this[double x] { get; }
-        public void Nacrtaj(Graphics g, PointF Oxy, double k, double a, double b)
+        public void Nacrtaj(Graphics g, PointF Oxy, double k, double a, double b, float MaxY)
         {
             Pen olovka = new Pen(Color.Black, 2);
             for (double x = a+0.001; x <= b; x+=0.001)
             {
-                g.DrawLine(olovka, (float)(Oxy.X + (x - 0.001) * k), (float)(Oxy.Y - this[x - 0.001] * k), (float)(Oxy.X + x * k), (float)(Oxy.Y - this[x] * k));
+                float x1 = (float)(Oxy.X + (x - 0.001) * k);
+                float y1 = (float)(Oxy.Y - this[x - 0.001] * k);
+                float x2 = (float)(Oxy.X + x * k);
+                float y2 = (float)(Oxy.Y - this[x] * k);
+
+                if (y2 < 0)
+                    y2 = -1;
+                if (y2 > MaxY)
+                    y2 = MaxY+ 1;
+                if (y1 < 0)
+                    y1 = -1;
+                if (y1 > MaxY)
+                    y1 = MaxY+ 1;
+
+                g.DrawLine(olovka, x1, y1, x2, y2);
+                
+                
             }
         }
 
@@ -90,6 +106,7 @@ namespace CrtanjeFunkcije
 
     public class SlozenaFunkcija : Funkcija
     {
+
         Funkcija F1, F2;
         char op;
 

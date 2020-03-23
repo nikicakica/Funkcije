@@ -23,6 +23,8 @@ namespace CrtanjeFunkcije
             Funkcija f = new Konstanta(2);
             Funkcija g1 = new Promenljiva();
             Funkcija trojka = new Konstanta(3);
+            Funkcija m = new SlozenaFunkcija(f, g1, '^');
+            m.Nacrtaj(g, O, 5, -100, 100, pictureBox1.Height);
         }
     }
 }

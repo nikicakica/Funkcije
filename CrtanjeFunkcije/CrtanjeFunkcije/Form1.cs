@@ -23,9 +23,6 @@ namespace CrtanjeFunkcije
             Funkcija f = new Konstanta(2);
             Funkcija g1 = new Promenljiva();
             Funkcija trojka = new Konstanta(3);
-            Funkcija sinus = new Sinusna(((g1 + f) ^ trojka));
-            sinus.Nacrtaj(g, O, 50, -10, 10);
-            textBox1.Text = sinus.ToString();
         }
     }
 }

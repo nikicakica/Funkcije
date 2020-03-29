@@ -5,7 +5,7 @@ using System.Text;
 
 namespace CrtanjeFunkcije
 {
-    class Interval
+    public class Interval
     {
         private int otvorenLevo;
         private int otvorenDesno;
@@ -13,32 +13,32 @@ namespace CrtanjeFunkcije
         private double leva_gr;
         private double desna_gr;
 
-        public Interval ()
+        public Interval()
         {
             otvorenLevo = 1;
             otvorenDesno = 1;
-            leva_gr = -1000000;
-            desna_gr = 1000000;
+            leva_gr = -1000;
+            desna_gr = 1000;
         }
-        public Interval(double lg,double dg, int ol, int od)
+        public Interval(double lg, double dg, int ol, int od)
         {
             otvorenLevo = ol;
             otvorenDesno = od;
             leva_gr = lg;
             desna_gr = dg;
         }
-        public Interval (Interval m)
+        public Interval(Interval m)
         {
             otvorenDesno = m.otvorenDesno;
             otvorenLevo = m.otvorenLevo;
             leva_gr = m.leva_gr;
             desna_gr = m.desna_gr;
-        } 
-        
+        }
+
         public static bool operator ^(Interval a, Interval b) //vraca da li ima preklapanja izmedju ova 2 intervala
         {
-            
-            if (b.leva_gr > a.desna_gr) return false;          
+
+            if (b.leva_gr > a.desna_gr) return false;
             if (a.leva_gr > b.desna_gr) return false;
             if (a.leva_gr == b.desna_gr && (a.otvorenLevo == 1 || b.otvorenDesno == 1)) return false;
             if (b.leva_gr == a.desna_gr && (b.otvorenLevo == 1 || a.otvorenDesno == 1)) return false;
@@ -104,10 +104,9 @@ namespace CrtanjeFunkcije
             if (otvorenLevo == 0 && otvorenDesno == 0 && x >= leva_gr && x <= desna_gr) return true;
             return false;
         }
-    } 
+    }
 
-    
-     
-        
+
+
+
 }
-

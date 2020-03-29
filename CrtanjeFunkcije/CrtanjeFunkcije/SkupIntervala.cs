@@ -5,7 +5,7 @@ using System.Text;
 
 namespace CrtanjeFunkcije
 {
-    class SkupIntervala
+    public class SkupIntervala
     {
         Interval[] intervals;
         //poenta ovog konstruktora je da niz intervala koji dobije kao argument sazme u drugi ekvivalentan niz
@@ -60,6 +60,11 @@ namespace CrtanjeFunkcije
             {
                 this.intervals[i] = new Interval(intervals[i]);
             }
+        }
+        public SkupIntervala()
+        {
+            this.intervals = new Interval[100];
+            intervals[0] = new Interval();
         }
         public override string ToString()
         {

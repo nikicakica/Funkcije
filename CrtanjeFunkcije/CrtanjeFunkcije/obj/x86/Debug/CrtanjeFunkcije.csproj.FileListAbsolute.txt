@@ -16,3 +16,12 @@ C:\Users\HP\source\repos\Funkcije\CrtanjeFunkcije\CrtanjeFunkcije\obj\x86\Debug\
 C:\Users\HP\source\repos\Funkcije\CrtanjeFunkcije\CrtanjeFunkcije\obj\x86\Debug\CrtanjeFunkcije.csproj.CoreCompileInputs.cache
 C:\Users\HP\source\repos\Funkcije\CrtanjeFunkcije\CrtanjeFunkcije\obj\x86\Debug\CrtanjeFunkcije.exe
 C:\Users\HP\source\repos\Funkcije\CrtanjeFunkcije\CrtanjeFunkcije\obj\x86\Debug\CrtanjeFunkcije.pdb
+C:\Users\nikol\Desktop\Funkcije\CrtanjeFunkcije\CrtanjeFunkcije\obj\x86\Debug\CrtanjeFunkcije.csprojAssemblyReference.cache
+C:\Users\nikol\Desktop\Funkcije\CrtanjeFunkcije\CrtanjeFunkcije\obj\x86\Debug\CrtanjeFunkcije.Form1.resources
+C:\Users\nikol\Desktop\Funkcije\CrtanjeFunkcije\CrtanjeFunkcije\obj\x86\Debug\CrtanjeFunkcije.Properties.Resources.resources
+C:\Users\nikol\Desktop\Funkcije\CrtanjeFunkcije\CrtanjeFunkcije\obj\x86\Debug\CrtanjeFunkcije.csproj.GenerateResource.cache
+C:\Users\nikol\Desktop\Funkcije\CrtanjeFunkcije\CrtanjeFunkcije\obj\x86\Debug\CrtanjeFunkcije.csproj.CoreCompileInputs.cache
+C:\Users\nikol\Desktop\Funkcije\CrtanjeFunkcije\CrtanjeFunkcije\obj\x86\Debug\CrtanjeFunkcije.exe
+C:\Users\nikol\Desktop\Funkcije\CrtanjeFunkcije\CrtanjeFunkcije\obj\x86\Debug\CrtanjeFunkcije.pdb
+C:\Users\nikol\Desktop\Funkcije\CrtanjeFunkcije\CrtanjeFunkcije\bin\Debug\CrtanjeFunkcije.exe
+C:\Users\nikol\Desktop\Funkcije\CrtanjeFunkcije\CrtanjeFunkcije\bin\Debug\CrtanjeFunkcije.pdb

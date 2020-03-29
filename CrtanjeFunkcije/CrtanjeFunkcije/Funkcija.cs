@@ -10,6 +10,7 @@ namespace CrtanjeFunkcije
 {
     public abstract class Funkcija
     {
+        SkupIntervala domen = new SkupIntervala();
         public abstract double Vrednost(double x);
         public abstract double this[double x] { get; }
         public void Nacrtaj(Graphics g, PointF Oxy, double k, double a, double b, float MaxY)
@@ -32,8 +33,6 @@ namespace CrtanjeFunkcije
                     y1 = MaxY+ 1;
 
                 g.DrawLine(olovka, x1, y1, x2, y2);
-                
-                
             }
         }
 
@@ -57,7 +56,6 @@ namespace CrtanjeFunkcije
         {
             return new SlozenaFunkcija(F1, F2, '^');
         }
-
         public static Funkcija operator -(Funkcija F)
         {
             return new Konstanta(0) - F;
